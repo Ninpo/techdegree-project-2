@@ -39,7 +39,10 @@ def create_teams(experienced_players, novice_players):
         for i in range(len(novice_players) // num_teams)
     ]
     # Create list of dicts, each containing final team roster.
-    return [{"team": team, "players": experienced_groups.pop() + novice_groups.pop()} for team in TEAMS]
+    return [
+        {"team": team, "players": experienced_groups.pop() + novice_groups.pop()}
+        for team in TEAMS
+    ]
 
 
 def read_player_list():
