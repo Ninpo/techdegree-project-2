@@ -29,15 +29,11 @@ def create_teams(experienced_players, novice_players):
     """
     num_teams = len(TEAMS)
     # Divide experienced players into number of desired teams
-    experienced_groups = [
-        experienced_players[num_teams * i : num_teams * (i + 1)]
-        for i in range(len(experienced_players) // num_teams)
-    ]
+    experienced_groups = [experienced_players[i::num_teams] for i in range(num_teams)]
+
     # Divide remaining players into number of desired teams
-    novice_groups = [
-        novice_players[num_teams * i : num_teams * (i + 1)]
-        for i in range(len(novice_players) // num_teams)
-    ]
+    novice_groups = [novice_players[i::num_teams] for i in range(num_teams)]
+
     # Create list of dicts, each containing final team roster.
     return [
         {"team": team, "players": experienced_groups.pop() + novice_groups.pop()}
